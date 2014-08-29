@@ -40,7 +40,7 @@
 
 #define swingScale 1.1f
 #define swingOffsetHorizontal -8
-#define swingOffsetVertical 27
+#define swingOffsetVertical 29
 
 #define propellerScale 1.3f
 #define propellerOffsetHorizontal -3
