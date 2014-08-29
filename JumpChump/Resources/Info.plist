@@ -26,6 +26,8 @@
 	</array>
 	<key>CFBundleIconFiles~ipad</key>
 	<array>
+		<string>icon-100</string>
+		<string>icon-50</string>
 		<string>icon-40</string>
 		<string>icon-114</string>
 		<string>icon-80</string>
