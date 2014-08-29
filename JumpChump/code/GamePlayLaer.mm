@@ -39,7 +39,7 @@
 #define pipesStartPosY (SCREEN_HEIGHT / 2 + 50)
 
 #define swingScale 1.1f
-#define swingOffsetHorizontal -14
+#define swingOffsetHorizontal -8
 #define swingOffsetVertical 27
 
 #define propellerScale 1.3f
@@ -201,12 +201,12 @@
     m_btnPlay = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"textures/gui/b_play.png"]
                                         selectedSprite:[CCSprite spriteWithFile:@"textures/gui/b_play.png"]
                                                 target:self
-                                              selector:@selector(onMenuPlay:)];
+                                              selector:@selector(onMenuRateAppNow:)];
     
     m_btnRate = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"textures/gui/b_rate.png"]
                                         selectedSprite:[CCSprite spriteWithFile:@"textures/gui/b_rate.png"]
                                                 target:self
-                                              selector:@selector(onMenuRateAppNow:)];
+                                              selector:@selector(onMenuPlay:)];
     
     m_btnGameCenter = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"textures/gui/b_rang.png"]
                                               selectedSprite:[CCSprite spriteWithFile:@"textures/gui/b_rang.png"]
