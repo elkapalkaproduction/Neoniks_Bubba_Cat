@@ -147,6 +147,7 @@ typedef enum _bannerType
     int DebugCoinsCount;
     //ALuint rotorSound;
     GLuint rotorSound;
+    float soundElapsed;
     bool characterPlaying;
     
     CCSprite *coins[pipesMaxCount];
