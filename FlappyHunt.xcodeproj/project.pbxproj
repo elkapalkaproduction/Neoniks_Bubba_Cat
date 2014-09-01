@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3045785419B4C245001B3AC5 /* MFLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785319B4C245001B3AC5 /* MFLanguage.m */; };
+		3045785619B4C695001B3AC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3045785519B4C695001B3AC5 /* Images.xcassets */; };
+		3045785919B4C7DB001B3AC5 /* MFImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785819B4C7DB001B3AC5 /* MFImageCropper.m */; };
+		308327F019B1F0BA00B02985 /* logo_rus-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 308327EF19B1F0BA00B02985 /* logo_rus-hd.png */; };
+		308327F219B1F0CF00B02985 /* logo_eng-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 308327F119B1F0CF00B02985 /* logo_eng-hd.png */; };
 		45A7ECA719B13A340094C536 /* icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A7ECA519B13A340094C536 /* icon-50.png */; };
 		45A7ECA819B13A340094C536 /* icon-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 45A7ECA619B13A340094C536 /* icon-100.png */; };
 		4D2296D119A644DC003B9D41 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4D2296CC19A644DC003B9D41 /* Default-568h@2x.png */; };
@@ -235,6 +240,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3045785219B4C245001B3AC5 /* MFLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLanguage.h; sourceTree = "<group>"; };
+		3045785319B4C245001B3AC5 /* MFLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLanguage.m; sourceTree = "<group>"; };
+		3045785519B4C695001B3AC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlappyHunt/Images.xcassets; sourceTree = SOURCE_ROOT; };
+		3045785719B4C7DB001B3AC5 /* MFImageCropper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFImageCropper.h; sourceTree = "<group>"; };
+		3045785819B4C7DB001B3AC5 /* MFImageCropper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFImageCropper.m; sourceTree = "<group>"; };
+		308327EF19B1F0BA00B02985 /* logo_rus-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_rus-hd.png"; sourceTree = "<group>"; };
+		308327F119B1F0CF00B02985 /* logo_eng-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_eng-hd.png"; sourceTree = "<group>"; };
 		45A7ECA519B13A340094C536 /* icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-50.png"; sourceTree = "<group>"; };
 		45A7ECA619B13A340094C536 /* icon-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-100.png"; sourceTree = "<group>"; };
 		4D2296CC19A644DC003B9D41 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -762,6 +774,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3045784C19B4C00F001B3AC5 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4D7C92B319A4C53E007461B5 /* icon-29.png */,
+				4D2296D619A64546003B9D41 /* icon-40.png */,
+				4D7C92B419A4C53E007461B5 /* icon-57.png */,
+				4D7C92B519A4C53E007461B5 /* icon-58.png */,
+				4D7C92B619A4C53E007461B5 /* icon-72.png */,
+				4D7C92B719A4C53E007461B5 /* icon-76.png */,
+				4D7C92B819A4C53E007461B5 /* icon-80.png */,
+				4D7C92B919A4C53E007461B5 /* icon-114.png */,
+				4D7C92BA19A4C53E007461B5 /* icon-120.png */,
+				4D7C92BB19A4C53E007461B5 /* icon-144.png */,
+				4D7C92BC19A4C53E007461B5 /* icon-152.png */,
+				45A7ECA519B13A340094C536 /* icon-50.png */,
+				45A7ECA619B13A340094C536 /* icon-100.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
+		3045784D19B4C02F001B3AC5 /* Layers */ = {
+			isa = PBXGroup;
+			children = (
+				84C4ADF418DD13B40018BA6A /* IntroLayer.h */,
+				84C4ADF518DD13B40018BA6A /* IntroLayer.mm */,
+				84C4ADF218DD13B40018BA6A /* HelloWorldLayer.h */,
+				84C4ADF318DD13B40018BA6A /* HelloWorldLayer.mm */,
+				84C4AE0518DD2D390018BA6A /* GamePlayLaer.h */,
+				84C4AE0618DD2D390018BA6A /* GamePlayLaer.mm */,
+				84F6D5FC18DF576B00393FE2 /* BackgroundLayer.h */,
+				84F6D5FD18DF576B00393FE2 /* BackgroundLayer.mm */,
+			);
+			name = Layers;
+			sourceTree = "<group>";
+		};
+		3045784E19B4C1C2001B3AC5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3045785719B4C7DB001B3AC5 /* MFImageCropper.h */,
+				3045785819B4C7DB001B3AC5 /* MFImageCropper.m */,
+				3045785219B4C245001B3AC5 /* MFLanguage.h */,
+				3045785319B4C245001B3AC5 /* MFLanguage.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		308327EE19B1F0A500B02985 /* Logo */ = {
+			isa = PBXGroup;
+			children = (
+				308327F119B1F0CF00B02985 /* logo_eng-hd.png */,
+				308327EF19B1F0BA00B02985 /* logo_rus-hd.png */,
+			);
+			name = Logo;
+			sourceTree = "<group>";
+		};
 		4D2296CB19A644DC003B9D41 /* launch-images */ = {
 			isa = PBXGroup;
 			children = (
@@ -986,6 +1053,7 @@
 				84C4ADEF18DD13B40018BA6A /* code */,
 				84C4ABCF18DD13550018BA6A /* Resources */,
 				84C4ABE918DD13550018BA6A /* libs */,
+				3045785519B4C695001B3AC5 /* Images.xcassets */,
 				84C4ADD518DD13590018BA6A /* Supporting Files */,
 			);
 			name = FlappyHunt;
@@ -995,20 +1063,9 @@
 		84C4ABCF18DD13550018BA6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				45A7ECA519B13A340094C536 /* icon-50.png */,
-				45A7ECA619B13A340094C536 /* icon-100.png */,
+				3045784C19B4C00F001B3AC5 /* Icons */,
+				308327EE19B1F0A500B02985 /* Logo */,
 				4D2296CB19A644DC003B9D41 /* launch-images */,
-				4D7C92B319A4C53E007461B5 /* icon-29.png */,
-				4D2296D619A64546003B9D41 /* icon-40.png */,
-				4D7C92B419A4C53E007461B5 /* icon-57.png */,
-				4D7C92B519A4C53E007461B5 /* icon-58.png */,
-				4D7C92B619A4C53E007461B5 /* icon-72.png */,
-				4D7C92B719A4C53E007461B5 /* icon-76.png */,
-				4D7C92B819A4C53E007461B5 /* icon-80.png */,
-				4D7C92B919A4C53E007461B5 /* icon-114.png */,
-				4D7C92BA19A4C53E007461B5 /* icon-120.png */,
-				4D7C92BB19A4C53E007461B5 /* icon-144.png */,
-				4D7C92BC19A4C53E007461B5 /* icon-152.png */,
 				4D7C92AF19A4B560007461B5 /* Square.ttf */,
 				4DC2BFD019250BD10053EE90 /* fonts */,
 				4DC2BFCB1924F0840053EE90 /* textures */,
@@ -1533,22 +1590,16 @@
 		84C4ADEF18DD13B40018BA6A /* code */ = {
 			isa = PBXGroup;
 			children = (
+				3045784E19B4C1C2001B3AC5 /* Model */,
+				3045784D19B4C02F001B3AC5 /* Layers */,
 				84AD3A0C18DFD17E00922C7D /* ContactListener.h */,
 				84AD3A0D18DFD17E00922C7D /* ContactListener.mm */,
 				84C4ADF018DD13B40018BA6A /* GLES-Render.h */,
 				84C4ADF118DD13B40018BA6A /* GLES-Render.mm */,
-				84C4ADF218DD13B40018BA6A /* HelloWorldLayer.h */,
-				84C4ADF318DD13B40018BA6A /* HelloWorldLayer.mm */,
-				84C4ADF418DD13B40018BA6A /* IntroLayer.h */,
-				84C4ADF518DD13B40018BA6A /* IntroLayer.mm */,
 				84C4ADF618DD13B40018BA6A /* PhysicsSprite.h */,
 				84C4ADF718DD13B40018BA6A /* PhysicsSprite.mm */,
-				84C4AE0518DD2D390018BA6A /* GamePlayLaer.h */,
-				84C4AE0618DD2D390018BA6A /* GamePlayLaer.mm */,
 				840EB9A218DD3A970095C137 /* AnimatedText.h */,
 				840EB9A318DD3A980095C137 /* AnimatedText.mm */,
-				84F6D5FC18DF576B00393FE2 /* BackgroundLayer.h */,
-				84F6D5FD18DF576B00393FE2 /* BackgroundLayer.mm */,
 			);
 			path = code;
 			sourceTree = "<group>";
@@ -1641,12 +1692,14 @@
 			files = (
 				4DCF1B3F1927AB50005E0EB2 /* .gitignore in Resources */,
 				4D7C92C619A4C53E007461B5 /* icon-152.png in Resources */,
+				308327F219B1F0CF00B02985 /* logo_eng-hd.png in Resources */,
 				4D7C92EA19A4D6C3007461B5 /* README.txt in Resources */,
 				4D7C92C319A4C53E007461B5 /* icon-114.png in Resources */,
 				4D2296D419A644DC003B9D41 /* Default.png in Resources */,
 				45A7ECA719B13A340094C536 /* icon-50.png in Resources */,
 				4D7C92C519A4C53E007461B5 /* icon-144.png in Resources */,
 				4D2296D319A644DC003B9D41 /* Default-Portrait~ipad.png in Resources */,
+				3045785619B4C695001B3AC5 /* Images.xcassets in Resources */,
 				4D7C92C119A4C53E007461B5 /* icon-76.png in Resources */,
 				8426A98B18DFB373001972F0 /* button.wav in Resources */,
 				4DCF1B431927AB50005E0EB2 /* CHANGELOG.md in Resources */,
@@ -1672,6 +1725,7 @@
 				4D7C92BF19A4C53E007461B5 /* icon-58.png in Resources */,
 				4D7C92AE19A3FD63007461B5 /* crash.mp3 in Resources */,
 				4D7C92F519A4DAD9007461B5 /* README.md in Resources */,
+				308327F019B1F0BA00B02985 /* logo_rus-hd.png in Resources */,
 				4D2296D219A644DC003B9D41 /* Default-Portrait@2x~ipad.png in Resources */,
 				8426A98318DFB373001972F0 /* music_back.mp3 in Resources */,
 				4D7C92C419A4C53E007461B5 /* icon-120.png in Resources */,
@@ -1722,6 +1776,7 @@
 				84C4AC0B18DD13560018BA6A /* CCActionProgressTimer.m in Sources */,
 				84C4ADCE18DD13590018BA6A /* b2WheelJoint.cpp in Sources */,
 				84C4AC5B18DD13560018BA6A /* CCParticleExamples.m in Sources */,
+				3045785419B4C245001B3AC5 /* MFLanguage.m in Sources */,
 				84C4ADB618DD13590018BA6A /* b2GearJoint.cpp in Sources */,
 				84C4ACDA18DD13570018BA6A /* base64.c in Sources */,
 				84C4ACC718DD13570018BA6A /* CCTouchDispatcher.m in Sources */,
@@ -1806,6 +1861,7 @@
 				84C4AD9D18DD13590018BA6A /* b2Contact.cpp in Sources */,
 				84C4AD8D18DD13590018BA6A /* b2World.cpp in Sources */,
 				84C4AD9418DD13590018BA6A /* b2ChainAndCircleContact.cpp in Sources */,
+				3045785919B4C7DB001B3AC5 /* MFImageCropper.m in Sources */,
 				84C4ACAB18DD13570018BA6A /* CCTransition.m in Sources */,
 				84C4AE0018DD1B0F0018BA6A /* global.mm in Sources */,
 				84C4AE0118DD1B0F0018BA6A /* SharedData.mm in Sources */,
@@ -1945,8 +2001,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ROMAN GAL (LKUFD2QJ3V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ROMAN GAL (LKUFD2QJ3V)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1977,7 +2034,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = FlappyHunt;
-				PROVISIONING_PROFILE = "71645c9e-28f7-4635-b3cb-48dc859d1970";
+				PROVISIONING_PROFILE = "1B3C4035-2F2C-4AE9-AF49-BECDBCD625CE";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
 				WRAPPER_EXTENSION = app;
@@ -1988,8 +2045,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: ROMAN GAL (LKUFD2QJ3V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: ROMAN GAL (LKUFD2QJ3V)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2019,7 +2077,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = FlappyHunt;
-				PROVISIONING_PROFILE = "71645c9e-28f7-4635-b3cb-48dc859d1970";
+				PROVISIONING_PROFILE = "1B3C4035-2F2C-4AE9-AF49-BECDBCD625CE";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
 				VALIDATE_PRODUCT = YES;
