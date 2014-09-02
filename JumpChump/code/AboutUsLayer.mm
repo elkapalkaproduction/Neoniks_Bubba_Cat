@@ -17,15 +17,12 @@
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
 +(CCScene *) scene
 {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
     AboutUsLayer *layer = [AboutUsLayer node];
 	
-	// add layer as a child to scene
 	[scene addChild: layer];
 	
-	// return the scene
 	return scene;
 }
 
@@ -34,7 +31,6 @@
 {
 	[super onEnter];
     
-	// ask director for the window size
 	CGSize size = [[CCDirector sharedDirector] winSize];
     
 	CCSprite *background;
@@ -42,13 +38,16 @@
     
     
     NSString *backgroundName=@"";
+    NSString *siteImageName= @"";
     if ([[MFLanguage sharedLanguage].language isEqualToString:@"ru"]) {
+        siteImageName=@"site-rus.png";
         if ([UIScreen mainScreen].bounds.size.height==568) {
             backgroundName=@"about-rus-iphone5hd.png";
         }else{
             backgroundName=@"about-rus.png";
         }
     }else {
+        siteImageName=@"site-eng.png";
         if ([UIScreen mainScreen].bounds.size.height==568) {
             backgroundName=@"about-eng-iphone5hd.png";
         }else{
@@ -59,30 +58,12 @@
     
     
     
-   /* if ([UIScreen mainScreen].bounds.size.height==568) {
-        offsetForPlayButton = 40 +m_btnRate.boundingBox.size.height/2;
-        offsetForAboutUsButton = 10;
-    }else{
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-            offsetForAboutUsButton = 60;
-        }else{
-            offsetForAboutUsButton = 10;
-        }
-        offsetForPlayButton =m_btnRate.boundingBox.size.height/2;
-    }*/
-    
-    //	if( UI_USER_INTERFACE_IDIOM() ==IUserInterfaceIdiomPhone ) {
     background = [CCSprite spriteWithFile:backgroundName ];
     float ratio = [MFImageCropper spriteRatio:background];
     background.scaleX= size.width/background.contentSize.width;
     background.scaleY=background.contentSize.width*background.scaleX *ratio /background.contentSize.height;
-    //		background.rotation = 90;
-    //	} else {
-    //		background = [CCSprite spriteWithFile:@"Default-Landscape~ipad.png"];
-    //	}
 	background.position = ccp(size.width/2, size.height/2);
     
-//    CCFadeTo *fadeIn = [CCFadeIn actionWithDuration:1];
     
 	[self addChild: background];
     
@@ -90,14 +71,53 @@
                                                             selectedSprite:[CCSprite spriteWithFile:@"control_x.png"]
                                                                     target:self
                                                                   selector:@selector(close:)];
-    closeButton.position=ccp(SCREEN_WIDTH - closeButton.boundingBox.size.width/2 -5, SCREEN_HEIGHT - closeButton.boundingBox.size.height/2 -5);
+    
+    
+    CCMenuItemSprite *siteButton = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:siteImageName]
+                                                            selectedSprite:[CCSprite spriteWithFile:siteImageName]
+                                                                    target:self
+                                                                  selector:@selector(openURL:)];
+    
+    
+    float closeButtonOffsetX=0;
+    float closeButtonOffsetY=0;
+    float siteButtonOffsetX=0;
+    float siteButtonOffsetY=0;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] !=UIUserInterfaceIdiomPad) {
+        closeButton.scale=0.6;
+        siteButton.scale=0.6;
+        closeButtonOffsetX = 5;
+        closeButtonOffsetY= 5;
+        if ([UIScreen mainScreen].bounds.size.height==568) {
+            siteButtonOffsetX =10;
+            siteButtonOffsetY =5;
+        }else{
+            siteButtonOffsetX =5;
+            siteButtonOffsetY =25;
+        }
+    }else{
+        closeButtonOffsetX = 10;
+        closeButtonOffsetY= 10;
+        siteButtonOffsetX =40;
+        siteButtonOffsetY =15;
+    }
+    closeButton.position=ccp(SCREEN_WIDTH - closeButton.boundingBox.size.width/2 -closeButtonOffsetX, SCREEN_HEIGHT - closeButton.boundingBox.size.height/2 -closeButtonOffsetY);
+    
+    siteButton.position=ccp(SCREEN_WIDTH - siteButton.boundingBox.size.width/2 -siteButtonOffsetX, SCREEN_HEIGHT/2 -siteButtonOffsetY);
+
+    
+    
     closeButton.isEnabled=YES;
-    CCMenu* menu = [CCMenu menuWithItems:closeButton, nil];
+    siteButton.isEnabled=YES;
+    
+    
+    
+    
+    CCMenu* menu = [CCMenu menuWithItems:closeButton, siteButton, nil];
     menu.position = CGPointZero;
     [self addChild:menu];
-//    [self addChild:closeButton];
-    
-//    [background runAction:fadeIn];
+
 	
     
 }
@@ -105,10 +125,16 @@
     [[CCDirector sharedDirector] pushScene:[GamePlayLaer scene]];
 }
 
-
--(void) makeTransition:(ccTime)dt
-{
-//	[[CCDirector sharedDirector] replaceScene:[CCTransitionFade transitionWithDuration:1.0 scene:[GamePlayLaer scene] withColor:ccWHITE]];
+-(void)openURL:(id)sender{
+    if ([[MFLanguage sharedLanguage].language isEqualToString:@"ru"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.neoniki.com"]];
+    }else{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.neoniks.com"]];
+    }
+    
 }
+
+
+
 
 @end

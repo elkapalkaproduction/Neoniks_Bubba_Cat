@@ -13,5 +13,7 @@
 
 +(float) spriteRatio:(CCSprite *)node;
 
++(float)spriteRatioWithMenuItem:(CCMenuItemSprite *)node;
+
 
 @end

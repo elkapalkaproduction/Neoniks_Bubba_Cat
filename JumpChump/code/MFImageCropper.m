@@ -17,5 +17,12 @@
     return ratio;
 }
 
++(float)spriteRatioWithMenuItem:(CCMenuItemSprite *)node{
+    float ratio=0;
+    //    ratio = node.size.height / node.size.width;
+    ratio = node.contentSize.height/ node.contentSize.width;
+    return ratio;
+}
+
 
 @end

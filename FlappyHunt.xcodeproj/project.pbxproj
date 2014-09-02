@@ -17,8 +17,8 @@
 		3072D8DC19B660B200CF6B17 /* about-rus-iphone5hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D319B660B200CF6B17 /* about-rus-iphone5hd.png */; };
 		3072D8DD19B660B200CF6B17 /* about-rus-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D419B660B200CF6B17 /* about-rus-ipadhd.png */; };
 		3072D8DE19B660B200CF6B17 /* control_x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D519B660B200CF6B17 /* control_x.png */; };
-		3072D8DF19B660B200CF6B17 /* www-eng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D619B660B200CF6B17 /* www-eng.png */; };
-		3072D8E019B660B200CF6B17 /* www-rus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D719B660B200CF6B17 /* www-rus.png */; };
+		3072D8DF19B660B200CF6B17 /* site-eng.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D619B660B200CF6B17 /* site-eng.png */; };
+		3072D8E019B660B200CF6B17 /* site-rus.png in Resources */ = {isa = PBXBuildFile; fileRef = 3072D8D719B660B200CF6B17 /* site-rus.png */; };
 		3072D8E319B6612300CF6B17 /* AboutUsLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3072D8E219B6612300CF6B17 /* AboutUsLayer.mm */; };
 		308327F019B1F0BA00B02985 /* logo_rus-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 308327EF19B1F0BA00B02985 /* logo_rus-hd.png */; };
 		308327F219B1F0CF00B02985 /* logo_eng-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 308327F119B1F0CF00B02985 /* logo_eng-hd.png */; };
@@ -262,8 +262,8 @@
 		3072D8D319B660B200CF6B17 /* about-rus-iphone5hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-rus-iphone5hd.png"; sourceTree = "<group>"; };
 		3072D8D419B660B200CF6B17 /* about-rus-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "about-rus-ipadhd.png"; sourceTree = "<group>"; };
 		3072D8D519B660B200CF6B17 /* control_x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = control_x.png; sourceTree = "<group>"; };
-		3072D8D619B660B200CF6B17 /* www-eng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "www-eng.png"; sourceTree = "<group>"; };
-		3072D8D719B660B200CF6B17 /* www-rus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "www-rus.png"; sourceTree = "<group>"; };
+		3072D8D619B660B200CF6B17 /* site-eng.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "site-eng.png"; sourceTree = "<group>"; };
+		3072D8D719B660B200CF6B17 /* site-rus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "site-rus.png"; sourceTree = "<group>"; };
 		3072D8E119B6612300CF6B17 /* AboutUsLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutUsLayer.h; sourceTree = "<group>"; };
 		3072D8E219B6612300CF6B17 /* AboutUsLayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AboutUsLayer.mm; sourceTree = "<group>"; };
 		308327EF19B1F0BA00B02985 /* logo_rus-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo_rus-hd.png"; sourceTree = "<group>"; };
@@ -853,8 +853,8 @@
 				3072D8D319B660B200CF6B17 /* about-rus-iphone5hd.png */,
 				3072D8D419B660B200CF6B17 /* about-rus-ipadhd.png */,
 				3072D8D519B660B200CF6B17 /* control_x.png */,
-				3072D8D619B660B200CF6B17 /* www-eng.png */,
-				3072D8D719B660B200CF6B17 /* www-rus.png */,
+				3072D8D619B660B200CF6B17 /* site-eng.png */,
+				3072D8D719B660B200CF6B17 /* site-rus.png */,
 			);
 			name = "About Us Page";
 			sourceTree = "<group>";
@@ -1757,7 +1757,7 @@
 				4D2296D119A644DC003B9D41 /* Default-568h@2x.png in Resources */,
 				4DC2BFCC1924F0840053EE90 /* textures in Resources */,
 				4DCF1B411927AB50005E0EB2 /* Appirater.podspec in Resources */,
-				3072D8E019B660B200CF6B17 /* www-rus.png in Resources */,
+				3072D8E019B660B200CF6B17 /* site-rus.png in Resources */,
 				3072D8DA19B660B200CF6B17 /* about-eng-ipadhd.png in Resources */,
 				4DC2BFC51924EDE20053EE90 /* bonus.mp3 in Resources */,
 				84C4ABE818DD13550018BA6A /* iTunesArtwork in Resources */,
@@ -1765,7 +1765,7 @@
 				84C4ABD518DD13550018BA6A /* fps_images.png in Resources */,
 				3072D8DE19B660B200CF6B17 /* control_x.png in Resources */,
 				4DCF1B441927AB50005E0EB2 /* README.md in Resources */,
-				3072D8DF19B660B200CF6B17 /* www-eng.png in Resources */,
+				3072D8DF19B660B200CF6B17 /* site-eng.png in Resources */,
 				4DCF1B421927AB50005E0EB2 /* AppiraterLocalizable.strings in Resources */,
 				3072D8D819B660B200CF6B17 /* about-eng-hd.png in Resources */,
 				4D7C92AC19A3FCF2007461B5 /* tap.mp3 in Resources */,
