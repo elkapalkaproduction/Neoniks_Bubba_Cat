@@ -17,6 +17,8 @@
 #import "Appirater.h"
 #include "math.h"
 
+#import "AboutUsLayer.h"
+
 @implementation GamePlayLaer
 #define changeThemeAuto YES
 
@@ -115,7 +117,7 @@
         [self initPhysics];
         [self initBackground];
         [self CreateGroundAndClouds];
-        [self InitializePaddle];
+//        [self InitializePaddle];
         [self initializeInstructions];
         
         coinTemplate = [CCSprite spriteWithFile:@"textures/coin/coin1.png"];
@@ -160,8 +162,40 @@
         
         [[SharedData getSharedInstance] playBackground:SOUND_BACK];
         
+        [self createAdmobAds];
 	}
 	return self;
+}
+
+-(void)createAdmobAds
+{
+    //CGSize winSize = [[CCDirector sharedDirector] winSize];
+    
+    //kGADAdSizeBanner
+    //kGADAdSizeSmartBannerLandscape
+    
+//    GADBannerView *adBanner_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+//    adBanner_.adUnitID = ADMOB_BANNER_ID;
+//    adBanner_.delegate = nil;
+//    //adBanner_.frame = CGRectMake(0, winSize.height - 50, winSize.width, 50);
+//    
+//    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+//    [adBanner_ setRootViewController:[app navController]];
+//    [[CCDirector sharedDirector].view addSubview:adBanner_];
+//    
+//    GADRequest *r = [[GADRequest alloc] init];
+//    [adBanner_ loadRequest:r];
+    mBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+    mBannerView.adUnitID = ADMOB_BANNER_ID;
+    mBannerView.delegate = nil;
+    //adBanner_.frame = CGRectMake(0, winSize.height - 50, winSize.width, 50);
+    
+    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+    [mBannerView setRootViewController:[app navController]];
+    [[CCDirector sharedDirector].view addSubview:mBannerView];
+    
+    GADRequest *r = [[GADRequest alloc] init];
+    [mBannerView loadRequest:r];
 }
 
 #pragma mark - #yo - initializing sprites
@@ -227,6 +261,10 @@
                                                    selectedSprite:[CCSprite spriteWithFile:@"textures/gui/b_mail.png"]
                                                            target:self
                                                          selector:@selector(onMenuMail:)];
+    
+    menuButtonAboutUs = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"textures/gui/Cat.png"] selectedSprite:[CCSprite spriteWithFile:@"textures/gui/Cat.png"] target:self selector:@selector(showAboutUsPage:)];
+    
+    
 
     
     m_btnRate.position = ccp(- POS_BUTTON_Y  * SCALE_X, POS_BUTTON_Y * SCALE_Y);
@@ -235,9 +273,11 @@
     m_btnTwitter.position = ccp(POS_BUTTON_Y * 2 * SCALE_X + 15 * SCALE_X, - POS_BUTTON_Y * SCALE_Y);
     m_btnFacebook.position = ccp(POS_BUTTON_Y * 2 * SCALE_X + 15 * SCALE_X, - POS_BUTTON_Y * SCALE_Y);
     m_btnMail.position = ccp(POS_BUTTON_Y * 2 * SCALE_X + 15 * SCALE_X, - POS_BUTTON_Y * SCALE_Y);
+    
+    menuButtonAboutUs.position =ccp(SCREEN_WIDTH + POS_BUTTON_Y * SCALE_X , POS_BUTTON_Y * SCALE_Y);
         
     
-    CCMenu* menu = [CCMenu menuWithItems:m_btnRate, m_btnPlay, m_btnGameCenter, m_btnFacebook, m_btnTwitter, m_btnMail, nil];
+    CCMenu* menu = [CCMenu menuWithItems:m_btnRate, m_btnPlay, m_btnGameCenter, m_btnFacebook, m_btnTwitter, m_btnMail, menuButtonAboutUs, nil];
     menu.position = CGPointZero;
     if(IS_IPHONE_5)
     {
@@ -350,12 +390,34 @@
     [m_btnFacebook setAnchorPoint:ccp(0.5f,0.5f)];
     [m_btnTwitter setAnchorPoint:ccp(0.5f,0.5f)];
     [m_btnMail setAnchorPoint:ccp(0.5f,0.5f)];
+    [menuButtonAboutUs setAnchorPoint:ccp(0.5f,0.5f)];
     
     
     int offset = SCREEN_HEIGHT / 2.5 + m_btnPlay.boundingBox.size.height / 2;
-    [m_btnPlay runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnRate.contentSize.width / 4, offset)]];
-    [m_btnGameCenter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2+ m_btnRate.contentSize.width / 4 , offset)]];
-    [m_btnRate runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+//    [m_btnPlay runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnRate.contentSize.width / 4, offset)]];
+//    [m_btnGameCenter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2+ m_btnRate.contentSize.width / 4 , offset)]];
+//    [m_btnRate runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+    float offsetForPlayButton=0;
+    float offsetForAboutUsButton=0;
+    if ([UIScreen mainScreen].bounds.size.height==568) {
+        offsetForPlayButton = 40 +m_btnRate.boundingBox.size.height/2;
+        offsetForAboutUsButton = 10;
+    }else{
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+            offsetForAboutUsButton = 60;
+        }else{
+            offsetForAboutUsButton = 10;
+        }
+        offsetForPlayButton =m_btnRate.boundingBox.size.height/2;
+    }
+    
+    [m_btnPlay runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 + m_btnRate.contentSize.width / 4, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+    
+    [m_btnGameCenter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnRate.contentSize.width / 4 , offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+    
+    [menuButtonAboutUs runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH/2 , SCREEN_HEIGHT/3 +offsetForAboutUsButton)]];
+    
+    [m_btnRate runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offsetForPlayButton)]];
     
     
     float marginX = (m_btnRate.boundingBox.size.width - (m_btnTwitter.boundingBox.size.width + m_btnFacebook.boundingBox.size.width + m_btnMail.boundingBox.size.width) ) ;
@@ -396,11 +458,21 @@
     [m_btnFacebook runAction:[CCMoveBy actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH, 0)]];
     [m_btnMail runAction:[CCMoveBy actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH, 0)]];
     
+    [menuButtonAboutUs runAction:[CCMoveBy actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH, 0)]];
+    
     
 }
 
 #pragma  mark Buttons
+
+-(void)showAboutUsPage:(id)sender{
+    [mBannerView removeFromSuperview];
+    [[RevMobAds session] hideBanner];
+    [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+}
+
 -(void) onMenuPlay:(id)sender{
+//    [self InitializePaddle];
     m_nGameMode = MODE_PLAY;
     [self hideTitleMenu];
     [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
@@ -486,6 +558,7 @@
 
 -(void) startGame
 {
+    [self InitializePaddle];
     if(paddle.scaleX < 0)
     {
         paddle.scaleX = -1 * paddle.scaleX;
@@ -581,12 +654,14 @@
     m_btnGameCenter.isEnabled = YES;
     m_btnPlay.isEnabled = YES;
     m_btnRate.isEnabled = YES;
+    menuButtonAboutUs.isEnabled=YES;
 }
 
 -(void) disableMenu{
     m_btnGameCenter.isEnabled = NO;
     m_btnPlay.isEnabled = NO;
     m_btnRate.isEnabled = NO;
+    menuButtonAboutUs.isEnabled =NO;
 }
 
 
@@ -1010,9 +1085,11 @@
 {
     //[NSString stringWithFormat:@"%@-idle.png", currentCharacterFileName]
     //paddle = [CCSprite spriteWithFile:@"textures/character/character.png"];
+    [paddle removeFromParentAndCleanup:YES];
     paddle = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@.png", currentCharacterFileName]];
     [self addChild:paddle z:5];
     paddle.tag = -100;
+//    paddle.tag = 0;
     paddle.anchorPoint = ccp(0.5f,0.5f);
     [paddle setPosition:ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, ground.boundingBox.size.height/2)];
     [paddle setScale:characterScale];

@@ -65,12 +65,13 @@ typedef enum _bannerType
     float       m_fReadyTime;
     BOOL        m_bShowGameOver;
     
-    CCMenuItemSprite*   m_btnRate;
-    CCMenuItemSprite*   m_btnPlay;
-    CCMenuItemSprite*   m_btnGameCenter;
-    CCMenuItemSprite*   m_btnFacebook;
-    CCMenuItemSprite*   m_btnTwitter;
-    CCMenuItemSprite*   m_btnMail;
+    CCMenuItemSprite * m_btnRate;
+    CCMenuItemSprite * m_btnPlay;
+    CCMenuItemSprite * m_btnGameCenter;
+    CCMenuItemSprite * m_btnFacebook;
+    CCMenuItemSprite * m_btnTwitter;
+    CCMenuItemSprite * m_btnMail;
+    CCMenuItemSprite * menuButtonAboutUs;
     
     CCLabelTTF*         m_lblHighScore;
     CCLabelTTF*         m_lblScore;

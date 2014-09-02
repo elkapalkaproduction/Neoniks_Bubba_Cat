@@ -81,6 +81,7 @@
 	[sharedFileUtils setiPhoneRetinaDisplaySuffix:@"-hd"];		// Default on iPhone RetinaDisplay is "-hd"
 	[sharedFileUtils setiPadSuffix:@"-ipad"];					// Default on iPad is "ipad"
 	[sharedFileUtils setiPadRetinaDisplaySuffix:@"-ipadhd"];	// Default on iPad RetinaDisplay is "-ipadhd"
+    
 	
 	// Assume that PVR images have premultiplied alpha
 	[CCTexture2D PVRImagesHavePremultipliedAlpha:YES];
@@ -116,7 +117,7 @@
 
 	[self initGameCenter];
     
-    [self createAdmobAds];
+//    [self createAdmobAds];
     
 	return YES;
 }
@@ -402,24 +403,24 @@
 }
 
 
--(void)createAdmobAds
-{
-    //CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
-    //kGADAdSizeBanner
-    //kGADAdSizeSmartBannerLandscape
-    GADBannerView *adBanner_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-    adBanner_.adUnitID = ADMOB_BANNER_ID;
-    adBanner_.delegate = nil;
-    //adBanner_.frame = CGRectMake(0, winSize.height - 50, winSize.width, 50);
-    
-    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-    [adBanner_ setRootViewController:[app navController]];
-    [[CCDirector sharedDirector].view addSubview:adBanner_];
-    
-    GADRequest *r = [[GADRequest alloc] init];
-    [adBanner_ loadRequest:r];
-}
+//-(void)createAdmobAds
+//{
+//    //CGSize winSize = [[CCDirector sharedDirector] winSize];
+//    
+//    //kGADAdSizeBanner
+//    //kGADAdSizeSmartBannerLandscape
+//    GADBannerView *adBanner_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+//    adBanner_.adUnitID = ADMOB_BANNER_ID;
+//    adBanner_.delegate = nil;
+//    //adBanner_.frame = CGRectMake(0, winSize.height - 50, winSize.width, 50);
+//    
+//    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
+//    [adBanner_ setRootViewController:[app navController]];
+//    [[CCDirector sharedDirector].view addSubview:adBanner_];
+//    
+//    GADRequest *r = [[GADRequest alloc] init];
+//    [adBanner_ loadRequest:r];
+//}
 
 
 -(void)ShareFacebook
