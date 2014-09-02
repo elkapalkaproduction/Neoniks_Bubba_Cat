@@ -65,6 +65,8 @@
 	background.position = ccp(size.width/2, size.height/2);
     
      CCFadeTo *fadeIn = [CCFadeIn actionWithDuration:1];
+    
+    background.opacity=0;
 
 	[self addChild: background];
     

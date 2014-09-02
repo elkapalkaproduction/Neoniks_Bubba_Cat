@@ -9,6 +9,8 @@
 #import "AboutUsLayer.h"
 #import "MFLanguage.h"
 #import "MFImageCropper.h"
+#import "global.h"
+#import "GamePlayLaer.h"
 
 @implementation AboutUsLayer
 
@@ -37,6 +39,8 @@
     
 	CCSprite *background;
     
+    
+    
     NSString *backgroundName=@"";
     if ([[MFLanguage sharedLanguage].language isEqualToString:@"ru"]) {
         if ([UIScreen mainScreen].bounds.size.height==568) {
@@ -51,6 +55,9 @@
             backgroundName=@"about-eng.png";
         }
     }
+    
+    
+    
     
    /* if ([UIScreen mainScreen].bounds.size.height==568) {
         offsetForPlayButton = 40 +m_btnRate.boundingBox.size.height/2;
@@ -75,15 +82,29 @@
     //	}
 	background.position = ccp(size.width/2, size.height/2);
     
-    CCFadeTo *fadeIn = [CCFadeIn actionWithDuration:1];
+//    CCFadeTo *fadeIn = [CCFadeIn actionWithDuration:1];
     
 	[self addChild: background];
     
-    [background runAction:fadeIn];
+    CCMenuItemSprite *closeButton = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"control_x.png"]
+                                                            selectedSprite:[CCSprite spriteWithFile:@"control_x.png"]
+                                                                    target:self
+                                                                  selector:@selector(close:)];
+    closeButton.position=ccp(SCREEN_WIDTH - closeButton.boundingBox.size.width/2 -5, SCREEN_HEIGHT - closeButton.boundingBox.size.height/2 -5);
+    closeButton.isEnabled=YES;
+    CCMenu* menu = [CCMenu menuWithItems:closeButton, nil];
+    menu.position = CGPointZero;
+    [self addChild:menu];
+//    [self addChild:closeButton];
+    
+//    [background runAction:fadeIn];
 	
     
-	[self scheduleOnce:@selector(makeTransition:) delay:2];
 }
+-(void)close:(id)sender{
+    [[CCDirector sharedDirector] pushScene:[GamePlayLaer scene]];
+}
+
 
 -(void) makeTransition:(ccTime)dt
 {

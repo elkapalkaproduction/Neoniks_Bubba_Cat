@@ -15,7 +15,7 @@
 #import "AppDelegate.h"
 #include <math.h>
 #import "Appirater.h"
-#include "math.h"
+#import "math.h"
 
 #import "AboutUsLayer.h"
 
