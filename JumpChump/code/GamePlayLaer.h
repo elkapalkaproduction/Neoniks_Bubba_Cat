@@ -165,6 +165,9 @@ typedef enum _bannerType
     float timeSpentOnSameDirection;
     
     NSString *currentCharacterFileName;
+    
+    // New
+//    BOOL isScheduleAlready;
 }
 
 //@property (strong, nonatomic)     BackgroundLayer* back_layer;

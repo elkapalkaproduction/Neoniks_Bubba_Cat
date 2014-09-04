@@ -15,6 +15,7 @@
 #import "global.h"
 #import <Social/Social.h>
 #import "MFLanguage.h"
+#import "BCGameLogic.h"
 
 
 @implementation AppController
@@ -28,6 +29,8 @@
 {
 	// Create the main window
     [MFLanguage sharedLanguage];
+    [BCGameLogic sharedLogic];
+    
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	

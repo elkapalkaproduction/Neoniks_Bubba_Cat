@@ -16,8 +16,15 @@
 #include <math.h>
 #import "Appirater.h"
 #import "math.h"
+#import "BCGameLogic.h"
 
 #import "AboutUsLayer.h"
+
+@interface GamePlayLaer ()
+
+@property(nonatomic)BOOL isGameStartedAlready;
+
+@end
 
 @implementation GamePlayLaer
 #define changeThemeAuto YES
@@ -117,7 +124,7 @@
         [self initPhysics];
         [self initBackground];
         [self CreateGroundAndClouds];
-//        [self InitializePaddle];
+        [self InitializePaddle];
         [self initializeInstructions];
         
         coinTemplate = [CCSprite spriteWithFile:@"textures/coin/coin1.png"];
@@ -216,7 +223,7 @@
 
 
 -(void) initBackground{
-    m_nGamePlayCount = 0;
+//    m_nGamePlayCount = 0;
     
     // background image
     if (IS_IPHONE_5)
@@ -387,7 +394,8 @@
 
 -(void) showTitleMenu
 {
-    if (m_nGamePlayCount == 0 || m_nGamePlayCount == 3)
+    
+    if ([BCGameLogic sharedLogic].gameLaunches == 0 || [BCGameLogic sharedLogic].gameLaunches % kNumberOfPlayedGamesForAds==0)
     {
         [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(showADS) userInfo:nil repeats:NO];
         //[self showADS];
@@ -482,16 +490,21 @@
 #pragma  mark Buttons
 
 -(void)showAboutUsPage:(id)sender{
-    [mBannerView removeFromSuperview];
-    [[RevMobAds session] hideBanner];
-    [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+    if (!self.isGameStartedAlready) {
+        [mBannerView removeFromSuperview];
+        [[RevMobAds session] hideBanner];
+        [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+    }
 }
 
 -(void) onMenuPlay:(id)sender{
-//    [self InitializePaddle];
-    m_nGameMode = MODE_PLAY;
-    [self hideTitleMenu];
-    [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
+    //    [self InitializePaddle];
+    if (!self.isGameStartedAlready) {
+        self.isGameStartedAlready=YES;
+        m_nGameMode = MODE_PLAY;
+        [self hideTitleMenu];
+        [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
+    }
 }
 
 -(void) onMenuSetting:(id)sender{
@@ -514,29 +527,37 @@
 
 -(void) onMenuGameCenter:(id)sender
 {
-    id appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
-    [appDelegate showLeaderboard];
-    [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
+    if (!self.isGameStartedAlready) {
+        id appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        [appDelegate showLeaderboard];
+        [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
+    }
 }
 
 
 -(void)onMenuFacebook:(id)sender
 {
-    AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
-    [appDelegate ShareFacebook];
+    if (!self.isGameStartedAlready) {
+        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        [appDelegate ShareFacebook];
+    }
     
 }
 
 -(void)onMenuTwitter:(id)sender
 {
-    AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
-    [appDelegate ShareTwitter];
+    if (!self.isGameStartedAlready) {
+        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        [appDelegate ShareTwitter];
+    }
 }
 
 -(void)onMenuMail:(id)sender
 {
-    AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
-    [appDelegate openMail:nil];
+    if (!self.isGameStartedAlready) {
+        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        [appDelegate openMail:nil];
+    }
     
 }
 
@@ -574,7 +595,10 @@
 
 -(void) startGame
 {
-    [self InitializePaddle];
+    paddle.opacity =255;
+    propeller.opacity=255;
+    
+    //        [self InitializePaddle];
     if(paddle.scaleX < 0)
     {
         paddle.scaleX = -1 * paddle.scaleX;
@@ -613,10 +637,11 @@
     //AnimationIdle
     
     [paddle runAction:[CCRotateTo actionWithDuration:0.4f angle:0]];
-    if(m_nGamePlayCount > 0)
-    {
+    //        if(m_nGamePlayCount > 0)
+    if ([BCGameLogic sharedLogic].gameLaunches>0) {
+        
         [self RemoveAllCoins];
-
+        
         [self RemoveAllPipes];
         [self InitPipes];
         if(!useCoin)
@@ -644,9 +669,9 @@
                            nil]];
     
     [m_lblScoreShadow runAction:[CCSequence actions:
-                           [CCDelayTime actionWithDuration:0.5f + TIME_BAR_SCALE],
-                           [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_TOP.x + scoreShadowOffset, POS_SCORE_TOP.y - scoreShadowOffset)],
-                           nil]];
+                                 [CCDelayTime actionWithDuration:0.5f + TIME_BAR_SCALE],
+                                 [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_TOP.x + scoreShadowOffset, POS_SCORE_TOP.y - scoreShadowOffset)],
+                                 nil]];
     
     m_lblScoreTitle.visible = NO;
     m_lblScoreTitleShadow.visible = NO;
@@ -655,6 +680,7 @@
     [self PlayRotorSound];
     
     [self scheduleUpdate];
+    //    }
 }
 
 -(void)GO
@@ -825,6 +851,8 @@
     if (!m_bShowGameOver)
     {
         m_bShowGameOver = YES;
+        [BCGameLogic sharedLogic].gameLaunches++;
+        
         [self showBarAnimNonPlay];
         
         [self AnimationDeath];
@@ -832,7 +860,8 @@
         [self RemoveAllCoins];
         [self StopRotorSound];
         
-        m_nGamePlayCount++;
+        self.isGameStartedAlready=NO;
+        
         //[self StopHammers];
         [SharedData setHighScore:m_HighScore];
         id appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
@@ -1040,8 +1069,10 @@
 
 -(void)onMenuRateAppNow:(id)sender
 {
-    [Appirater setAppId:APPLE_APP_ID];
-    [Appirater rateApp];
+    if (!self.isGameStartedAlready) {
+        [Appirater setAppId:APPLE_APP_ID];
+        [Appirater rateApp];
+    }
 }
 
 
@@ -1111,7 +1142,7 @@
     [paddle setPosition:ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, ground.boundingBox.size.height/2)];
     [paddle setScale:characterScale];
     paddle.position = ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, paddle.position.y);
-    
+    paddle.opacity =0;
     [self AddPropeller];
 }
 
@@ -1603,6 +1634,7 @@
     propeller.scale = propellerScale;
     propeller.position = ccp(paddle.contentSize.width / 2 + propellerOffsetHorizontal * SCALE_X,paddle.contentSize.height + propellerOffsetVertical * SCALE_Y);
     [paddle addChild:propeller z:10];
+    propeller.opacity=0;
     
     [self RunPropellerAnimation];
     
@@ -1611,6 +1643,7 @@
 
 -(void)RunPropellerAnimation
 {
+    NSLog(@"%@ popeller" , propeller);
     [propeller stopAllActions];
     NSMutableArray *frames = [NSMutableArray array];
     CCSpriteFrame *frame1, *frame2, *frame3, *frame4, *frame5, *frame6, *frame7;

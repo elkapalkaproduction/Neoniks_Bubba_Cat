@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		301D648919B8CC4A0028F207 /* blank-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 301D648819B8CC4A0028F207 /* blank-hd.png */; };
+		301D648C19B909DA0028F207 /* BCGameLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 301D648B19B909DA0028F207 /* BCGameLogic.m */; };
 		3045785419B4C245001B3AC5 /* MFLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785319B4C245001B3AC5 /* MFLanguage.m */; };
 		3045785619B4C695001B3AC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3045785519B4C695001B3AC5 /* Images.xcassets */; };
 		3045785919B4C7DB001B3AC5 /* MFImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785819B4C7DB001B3AC5 /* MFImageCropper.m */; };
@@ -252,6 +253,8 @@
 
 /* Begin PBXFileReference section */
 		301D648819B8CC4A0028F207 /* blank-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-hd.png"; sourceTree = "<group>"; };
+		301D648A19B909DA0028F207 /* BCGameLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BCGameLogic.h; sourceTree = "<group>"; };
+		301D648B19B909DA0028F207 /* BCGameLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BCGameLogic.m; sourceTree = "<group>"; };
 		3045785219B4C245001B3AC5 /* MFLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLanguage.h; sourceTree = "<group>"; };
 		3045785319B4C245001B3AC5 /* MFLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLanguage.m; sourceTree = "<group>"; };
 		3045785519B4C695001B3AC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlappyHunt/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -841,6 +844,8 @@
 				3045785819B4C7DB001B3AC5 /* MFImageCropper.m */,
 				3045785219B4C245001B3AC5 /* MFLanguage.h */,
 				3045785319B4C245001B3AC5 /* MFLanguage.m */,
+				301D648A19B909DA0028F207 /* BCGameLogic.h */,
+				301D648B19B909DA0028F207 /* BCGameLogic.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1941,6 +1946,7 @@
 				84C4AC1D18DD13560018BA6A /* CCCamera.m in Sources */,
 				84C4AC7E18DD13570018BA6A /* CCShaderCache.m in Sources */,
 				84C4AC2D18DD13560018BA6A /* CCGLProgram.m in Sources */,
+				301D648C19B909DA0028F207 /* BCGameLogic.m in Sources */,
 				8426A96B18DF9D53001972F0 /* SBJsonBase.m in Sources */,
 				84C4AD8618DD13590018BA6A /* b2Fixture.cpp in Sources */,
 				84C4ADC818DD13590018BA6A /* b2RopeJoint.cpp in Sources */,
