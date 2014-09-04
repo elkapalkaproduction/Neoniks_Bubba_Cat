@@ -21,16 +21,16 @@
 
 
 // Message appearing on a FB or Twittter share
-#define SHARE_MESSAGE @"Great game! Swing Chicken Copters. Get it here: bit.ly/er93si"
+#define SHARE_MESSAGE @"Help Bubba the flying cat! Beat my high score in this free game for your iPhone/iPad: bit.ly/bubba_cat"
 
 
 
-#define APPLE_APP_ID        @"911354859"
+#define APPLE_APP_ID        @"915973453"
 #define CB_APPID            @"53ff6ce489b0bb01b6456dea"
 #define CB_SIGNATURE        @"322183025c09228896fa6b5ba36abc910478f44d"
 #define REVMOB_APP_ID       @"53ff6c88f6eb08d006f32d94"
 #define ADMOB_BANNER_ID      @"ca-app-pub-1480731978958686/6463594991"
-#define kEasyLeaderboardID  @"com.appfresh.swingtestleaderboard"
+#define kEasyLeaderboardID  @"com.neoniks.bubba.cat.flight"
 
 
 #define EFFECT_BUTTON       @"button.wav"
