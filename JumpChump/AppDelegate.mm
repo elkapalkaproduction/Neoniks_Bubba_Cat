@@ -500,9 +500,9 @@
         
         mailer.mailComposeDelegate = self;
         
-        [mailer setSubject:@"Take a look at this game"];
+        [mailer setSubject:@"Check out my score in this awesome game"];
         
-        NSArray *toRecipients = [NSArray arrayWithObjects:@"friend@email.com", nil];
+        NSArray *toRecipients = [NSArray arrayWithObjects:@"", nil];
         [mailer setToRecipients:toRecipients];
         
         UIImage *myImage = [UIImage imageNamed:@"icon-120.png"];
