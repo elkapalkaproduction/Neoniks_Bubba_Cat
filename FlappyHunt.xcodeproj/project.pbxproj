@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301D648919B8CC4A0028F207 /* blank-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = 301D648819B8CC4A0028F207 /* blank-hd.png */; };
 		3045785419B4C245001B3AC5 /* MFLanguage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785319B4C245001B3AC5 /* MFLanguage.m */; };
 		3045785619B4C695001B3AC5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3045785519B4C695001B3AC5 /* Images.xcassets */; };
 		3045785919B4C7DB001B3AC5 /* MFImageCropper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3045785819B4C7DB001B3AC5 /* MFImageCropper.m */; };
@@ -250,6 +251,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		301D648819B8CC4A0028F207 /* blank-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blank-hd.png"; sourceTree = "<group>"; };
 		3045785219B4C245001B3AC5 /* MFLanguage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFLanguage.h; sourceTree = "<group>"; };
 		3045785319B4C245001B3AC5 /* MFLanguage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MFLanguage.m; sourceTree = "<group>"; };
 		3045785519B4C695001B3AC5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = FlappyHunt/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -1102,6 +1104,7 @@
 		84C4ABCF18DD13550018BA6A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				301D648819B8CC4A0028F207 /* blank-hd.png */,
 				3072D8CE19B6608E00CF6B17 /* About Us Page */,
 				3045784C19B4C00F001B3AC5 /* Icons */,
 				308327EE19B1F0A500B02985 /* Logo */,
@@ -1774,6 +1777,7 @@
 				4D7C92AE19A3FD63007461B5 /* crash.mp3 in Resources */,
 				4D7C92F519A4DAD9007461B5 /* README.md in Resources */,
 				3072D8DB19B660B200CF6B17 /* about-rus-hd.png in Resources */,
+				301D648919B8CC4A0028F207 /* blank-hd.png in Resources */,
 				308327F019B1F0BA00B02985 /* logo_rus-hd.png in Resources */,
 				4D2296D219A644DC003B9D41 /* Default-Portrait@2x~ipad.png in Resources */,
 				8426A98318DFB373001972F0 /* music_back.mp3 in Resources */,

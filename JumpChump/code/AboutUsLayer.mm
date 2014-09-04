@@ -73,6 +73,13 @@
                                                                   selector:@selector(close:)];
     
     
+    CCMenuItemSprite *closeAreaButton = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"control_x.png"]
+                                                            selectedSprite:[CCSprite spriteWithFile:@"control_x.png"]
+                                                                    target:self
+                                                                  selector:@selector(close:)];
+    
+    
+    
     CCMenuItemSprite *siteButton = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:siteImageName]
                                                             selectedSprite:[CCSprite spriteWithFile:siteImageName]
                                                                     target:self
@@ -102,6 +109,10 @@
         siteButtonOffsetX =40;
         siteButtonOffsetY =15;
     }
+    
+    closeAreaButton.scale=2;
+    closeAreaButton.position =ccp(SCREEN_WIDTH - closeAreaButton.boundingBox.size.width/2, SCREEN_HEIGHT - closeAreaButton.boundingBox.size.height/2);
+    closeAreaButton.opacity=0;
     closeButton.position=ccp(SCREEN_WIDTH - closeButton.boundingBox.size.width/2 -closeButtonOffsetX, SCREEN_HEIGHT - closeButton.boundingBox.size.height/2 -closeButtonOffsetY);
     
     siteButton.position=ccp(SCREEN_WIDTH - siteButton.boundingBox.size.width/2 -siteButtonOffsetX, SCREEN_HEIGHT/2 -siteButtonOffsetY);
@@ -114,7 +125,7 @@
     
     
     
-    CCMenu* menu = [CCMenu menuWithItems:closeButton, siteButton, nil];
+    CCMenu* menu = [CCMenu menuWithItems:closeButton, closeAreaButton, siteButton, nil];
     menu.position = CGPointZero;
     [self addChild:menu];
 
@@ -133,6 +144,27 @@
     }
     
 }
+
+//-(CCSprite*) createSpriteRectangleWithSize:(CGSize)size
+//
+//{
+//    CCSprite *sprite = [CCSprite node];
+//    
+//    GLubyte *buffer = malloc(sizeof(GLubyte)*4);
+//    
+//    for (int i=0;i<4;i++) {buffer=255;}
+//    
+//    CCTexture2D *tex = [[CCTexture2D alloc] initWithData:buffer pixelFormat:kCCTexture2DPixelFormat_RGB5A1 pixelsWide:1 pixelsHigh:1 contentSize:size];
+//    
+//    [sprite setTexture:tex];
+//    
+//    [sprite setTextureRect:CGRectMake(0, 0, size.width, size.height)];
+//    
+//    free(buffer);
+//    
+//    return sprite;
+//    
+//}
 
 
 

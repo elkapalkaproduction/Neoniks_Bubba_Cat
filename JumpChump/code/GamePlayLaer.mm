@@ -125,7 +125,7 @@
         coinTemplate.visible = NO;
         coinTemplate.tag = 0;
         
-        paddle.position = ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, paddle.position.y);
+//        paddle.position = ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, paddle.position.y);
         
         currentSpeed = propellerSpeed * SCALE_Y;
         pipePassedCount = 0;
@@ -356,18 +356,28 @@
 
 -(void) showBarAnimNonPlay{
     [self showTitleMenu];
-
     
-    [m_lblScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:POS_SCORE_LEFT]];
-    [m_lblScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + scoreShadowOffset, POS_SCORE_LEFT.y - scoreShadowOffset)]];
-    [m_lblScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x,POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y)]];
-    [m_lblScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + (1 * SCALE_X),POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y -(1 * SCALE_Y))]];
+    float globalOffset=0;
     
-    [m_lblHighScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:POS_SCORE_RIGHT]];
-    [m_lblHighScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + scoreShadowOffset, POS_SCORE_RIGHT.y - scoreShadowOffset)]];
-    [m_lblHighScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x,POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y)]];
-    [m_lblHighScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + (1 * SCALE_X),POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y - (1 * SCALE_Y))]];
+    if ([UIScreen mainScreen].bounds.size.height==568) {
+        globalOffset=50;
+    }else{
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
+            globalOffset=100;
+        }else{
+            globalOffset=60;
+        }
+    }
     
+    [m_lblScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x, POS_SCORE_LEFT.y +globalOffset)]];
+    [m_lblScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + scoreShadowOffset, POS_SCORE_LEFT.y - scoreShadowOffset +globalOffset)]];
+    [m_lblScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x,POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y +globalOffset)]];
+    [m_lblScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + (1 * SCALE_X),POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y -(1 * SCALE_Y)+globalOffset)]];
+    
+    [m_lblHighScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x, POS_SCORE_RIGHT.y - scoreShadowOffset+globalOffset)]];
+    [m_lblHighScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + scoreShadowOffset, POS_SCORE_RIGHT.y - scoreShadowOffset +globalOffset)]];
+    [m_lblHighScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x,POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y +globalOffset)]];
+    [m_lblHighScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + (1 * SCALE_X),POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y - (1 * SCALE_Y) +globalOffset)]];
     
     
     m_lblScoreTitle.visible = m_lblScoreTitleShadow.visible = m_lblHighScoreShadow.visible = m_lblHighScoreTitle.visible = m_lblHighScoreTitleShadow.visible = m_lblHighScore.visible = YES;
@@ -399,21 +409,27 @@
 //    [m_btnRate runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
     float offsetForPlayButton=0;
     float offsetForAboutUsButton=0;
+    float globalOffset = 0;
+    float offsetForIpad=0;
     if ([UIScreen mainScreen].bounds.size.height==568) {
         offsetForPlayButton = 40 +m_btnRate.boundingBox.size.height/2;
         offsetForAboutUsButton = 10;
+        globalOffset=0;
     }else{
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
             offsetForAboutUsButton = 60;
+            globalOffset=50;
+            offsetForIpad=30;
         }else{
             offsetForAboutUsButton = 10;
+            globalOffset=35;
         }
         offsetForPlayButton =m_btnRate.boundingBox.size.height/2;
     }
     
-    [m_btnPlay runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 + m_btnRate.contentSize.width / 4, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+    [m_btnPlay runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 + m_btnRate.contentSize.width / 4, offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height - globalOffset)]];
     
-    [m_btnGameCenter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnRate.contentSize.width / 4 , offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height)]];
+    [m_btnGameCenter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnRate.contentSize.width / 4 , offset + (5 * SCALE_Y) + m_btnPlay.contentSize.height - globalOffset)]];
     
     [menuButtonAboutUs runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH/2 , SCREEN_HEIGHT/3 +offsetForAboutUsButton)]];
     
@@ -422,15 +438,15 @@
     
     float marginX = (m_btnRate.boundingBox.size.width - (m_btnTwitter.boundingBox.size.width + m_btnFacebook.boundingBox.size.width + m_btnMail.boundingBox.size.width) ) ;
     marginX = marginX / 2;
-    [m_btnTwitter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height)]];
+    [m_btnTwitter runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height - globalOffset)]];
     
-    [m_btnFacebook runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnTwitter.boundingBox.size.width - marginX, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height)]];
-    
-    
-    [m_btnMail runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 + m_btnTwitter.boundingBox.size.width + marginX, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height)]];
+    [m_btnFacebook runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 - m_btnTwitter.boundingBox.size.width - marginX, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height - globalOffset)]];
     
     
-    id actionMoveTextDown = [CCMoveTo actionWithDuration:0.8f position:ccp(SCREEN_WIDTH / 2, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height + logo.boundingBox.size.height)];
+    [m_btnMail runAction:[CCMoveTo actionWithDuration:TIME_BUTTON_ACTION position:ccp(SCREEN_WIDTH / 2 + m_btnTwitter.boundingBox.size.width + marginX, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height - globalOffset)]];
+    
+    
+    id actionMoveTextDown = [CCMoveTo actionWithDuration:0.8f position:ccp(SCREEN_WIDTH / 2, offset + (10 * SCALE_Y) + m_btnRate.contentSize.height + m_btnPlay.contentSize.height + logo.boundingBox.size.height -globalOffset -offsetForIpad)];
     [logo runAction:[CCSequence actions:actionMoveTextDown,
                      [CCCallFunc actionWithTarget:self selector:@selector(enableMenu)], nil]];
     // show high score
@@ -1085,6 +1101,7 @@
 {
     //[NSString stringWithFormat:@"%@-idle.png", currentCharacterFileName]
     //paddle = [CCSprite spriteWithFile:@"textures/character/character.png"];
+    [propeller removeFromParentAndCleanup:YES];
     [paddle removeFromParentAndCleanup:YES];
     paddle = [CCSprite spriteWithFile:[NSString stringWithFormat:@"%@.png", currentCharacterFileName]];
     [self addChild:paddle z:5];
@@ -1093,6 +1110,7 @@
     paddle.anchorPoint = ccp(0.5f,0.5f);
     [paddle setPosition:ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, ground.boundingBox.size.height/2)];
     [paddle setScale:characterScale];
+    paddle.position = ccp(SCREEN_WIDTH / 2 - paddle.boundingBox.size.width / 2, paddle.position.y);
     
     [self AddPropeller];
 }
@@ -1579,6 +1597,7 @@
 
 -(void)AddPropeller
 {
+    
     propeller = [CCSprite spriteWithFile:@"textures/propeller/propeller-1.png"];
     propeller.anchorPoint = ccp(0.5f, 0);
     propeller.scale = propellerScale;
