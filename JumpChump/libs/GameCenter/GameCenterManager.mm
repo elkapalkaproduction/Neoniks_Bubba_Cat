@@ -140,11 +140,10 @@
 {
 	if([GKLocalPlayer localPlayer].authenticated == NO)
 	{
-		[[GKLocalPlayer localPlayer] authenticateWithCompletionHandler:^(NSError *error) 
-		{
-			[self callDelegateOnMainThread: @selector(processGameCenterAuth:) withArg: NULL error: error];
-		}];
-	}
+        [[GKLocalPlayer localPlayer] setAuthenticateHandler:^(UIViewController *vc, NSError *error) {
+            [self callDelegateOnMainThread: @selector(processGameCenterAuth:) withArg: NULL error: error];
+        }];
+    }
 }
 
 - (void) reloadHighScoresForCategory: (NSString*) category

@@ -116,7 +116,7 @@ enum {
 		
 		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 		
-		[[app navController] presentModalViewController:achivementViewController animated:YES];
+		[[app navController] presentViewController:achivementViewController animated:YES completion:NULL];
 		
 		[achivementViewController release];
 	}];
@@ -130,7 +130,7 @@ enum {
 		
 		AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
 		
-		[[app navController] presentModalViewController:leaderboardViewController animated:YES];
+		[[app navController] presentViewController:leaderboardViewController animated:YES completion:NULL];
 		
 		[leaderboardViewController release];
 	}];
@@ -288,13 +288,13 @@ enum {
 -(void) achievementViewControllerDidFinish:(GKAchievementViewController *)viewController
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:NULL];
 }
 
 -(void) leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController
 {
 	AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-	[[app navController] dismissModalViewControllerAnimated:YES];
+	[[app navController] dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

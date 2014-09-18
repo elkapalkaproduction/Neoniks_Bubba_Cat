@@ -283,7 +283,7 @@
 - (void)didDismissMoreApps {
     NSLog(@"dismissed more apps page, re-caching now");
     
-    [[Chartboost sharedChartboost] cacheMoreApps];
+    [[Chartboost sharedChartboost] cacheMoreApps:CBLocationHomeScreen];
 }
 
 
@@ -374,13 +374,13 @@
 		leaderboardController.leaderboardDelegate = self;
         [self submitScore];
         
-		[self.navController presentModalViewController: leaderboardController animated: YES];
+		[self.navController presentViewController:leaderboardController animated:YES completion:NULL];
         //		leaderboardController.view.transform = CGAffineTransformMakeRotation(CC_DEGREES_TO_RADIANS(0.0f));
 	}
 }
 
 - (void)leaderboardViewControllerDidFinish:(GKLeaderboardViewController *)viewController1{
-	[viewController1 dismissModalViewControllerAnimated: YES];
+	[viewController1 dismissViewControllerAnimated:YES completion:NULL];
 	[viewController2.view removeFromSuperview];
 	[viewController2.view setHidden:YES];
 	[viewController1 release];
@@ -390,12 +390,12 @@
 	GKAchievementViewController *achievements = [[GKAchievementViewController alloc] init];
 	if (achievements != NULL){
 		achievements.achievementDelegate = self;
-		[viewController2 presentModalViewController: achievements animated: YES];
+		[viewController2 presentViewController: achievements animated:YES completion:NULL];
 	}
 }
 
 - (void)achievementViewControllerDidFinish:(GKAchievementViewController *)viewController1{
-	[viewController1 dismissModalViewControllerAnimated: YES];
+	[viewController1 dismissViewControllerAnimated:YES completion:NULL];
 	[viewController2.view removeFromSuperview];
 	[viewController2.view setHidden:YES];
 	[viewController1 release];
@@ -548,7 +548,16 @@
     }
     
     // Remove the mail view
-    [[CCDirector sharedDirector] dismissModalViewControllerAnimated:YES];
+    [[CCDirector sharedDirector] dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+- (void)addOne {
+    
+}
+
+- (void)revmobAdDidFailWithError:(NSError *)error {
+    
 }
 @end
 

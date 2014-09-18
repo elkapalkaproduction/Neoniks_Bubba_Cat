@@ -10,29 +10,29 @@
 	<string>FlappyHunt</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>375BE50F-61CF-457B-A92D-F32590945C14</key>
+		<key>34AF917DA22DA6CB6CDF4E65C99E53B429A736A7</key>
 		<string>https://github.com/elkapalkaproduction/Neoniks_Bubba_Cat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>FlappyHunt.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>375BE50F-61CF-457B-A92D-F32590945C14</key>
+		<key>34AF917DA22DA6CB6CDF4E65C99E53B429A736A7</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/elkapalkaproduction/Neoniks_Bubba_Cat.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>375BE50F-61CF-457B-A92D-F32590945C14</string>
+	<string>34AF917DA22DA6CB6CDF4E65C99E53B429A736A7</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>375BE50F-61CF-457B-A92D-F32590945C14</string>
+			<string>34AF917DA22DA6CB6CDF4E65C99E53B429A736A7</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Neoniks_Bubba_Cat</string>
 		</dict>

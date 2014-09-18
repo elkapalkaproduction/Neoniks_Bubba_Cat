@@ -17,7 +17,7 @@
 #import "Appirater.h"
 #import "math.h"
 #import "BCGameLogic.h"
-
+#import <AudioToolbox/AudioServices.h>
 #import "AboutUsLayer.h"
 
 @interface GamePlayLaer ()
@@ -528,7 +528,7 @@
 -(void) onMenuGameCenter:(id)sender
 {
     if (!self.isGameStartedAlready) {
-        id appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        id appDelegate = (AppController*)[[UIApplication sharedApplication] delegate];
         [appDelegate showLeaderboard];
         [[SharedData getSharedInstance] playSoundEffect:EFFECT_BUTTON];
     }
@@ -538,7 +538,7 @@
 -(void)onMenuFacebook:(id)sender
 {
     if (!self.isGameStartedAlready) {
-        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        AppController* appDelegate = (AppController*)[[UIApplication sharedApplication] delegate];
         [appDelegate ShareFacebook];
     }
     
@@ -547,7 +547,7 @@
 -(void)onMenuTwitter:(id)sender
 {
     if (!self.isGameStartedAlready) {
-        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        AppController* appDelegate = (AppController*)[[UIApplication sharedApplication] delegate];
         [appDelegate ShareTwitter];
     }
 }
@@ -555,7 +555,7 @@
 -(void)onMenuMail:(id)sender
 {
     if (!self.isGameStartedAlready) {
-        AppController* appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        AppController* appDelegate = (AppController*) [[UIApplication sharedApplication] delegate];
         [appDelegate openMail:nil];
     }
     
@@ -850,6 +850,7 @@
 {
     if (!m_bShowGameOver)
     {
+        AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
         m_bShowGameOver = YES;
         [BCGameLogic sharedLogic].gameLaunches++;
         
@@ -864,7 +865,7 @@
         
         //[self StopHammers];
         [SharedData setHighScore:m_HighScore];
-        id appDelegate = [(AppController*) [UIApplication sharedApplication] delegate];
+        id appDelegate = (AppController*)[[UIApplication sharedApplication] delegate];
         [appDelegate submitScore];
         [self unscheduleUpdate];
         [self unschedule:_cmd];
