@@ -2114,6 +2114,7 @@
 					"$(PROJECT_DIR)/JumpChump/GoogleMobileAdsSdkiOS",
 					"$(PROJECT_DIR)/JumpChump/revmob",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -2122,6 +2123,7 @@
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2157,6 +2159,7 @@
 					"$(PROJECT_DIR)/JumpChump/GoogleMobileAdsSdkiOS",
 					"$(PROJECT_DIR)/JumpChump/revmob",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
@@ -2166,6 +2169,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
