@@ -36,6 +36,7 @@ typedef enum _bannerType
     CCSprite * spr_bg;
     
     CCSprite *logo;
+    CCSprite *catLogo;
     CCSprite *pipe_v_left_up, *pipe_v_left_down;
     CCSprite *pipe_v_right_up, *pipe_v_right_down;
     CCSprite *pipe_v_mid_up, *pipe_v_mid_down;
@@ -65,11 +66,11 @@ typedef enum _bannerType
     float       m_fReadyTime;
     BOOL        m_bShowGameOver;
     
-    CCMenuItemSprite * m_btnRate;
     CCMenuItemSprite * m_btnPlay;
+    CCMenuItemSprite * m_btnRate;
     CCMenuItemSprite * m_btnGameCenter;
-    CCMenuItemSprite * m_btnFacebook;
-    CCMenuItemSprite * m_btnTwitter;
+    CCMenuItemSprite * m_btnSound;
+    CCMenuItemSprite * m_btnMore;
     CCMenuItemSprite * m_btnMail;
     CCMenuItemSprite * menuButtonAboutUs;
     

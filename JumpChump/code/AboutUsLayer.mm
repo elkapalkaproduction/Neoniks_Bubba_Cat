@@ -41,14 +41,14 @@
     NSString *siteImageName= @"";
     if ([[MFLanguage sharedLanguage].language isEqualToString:@"ru"]) {
         siteImageName=@"site-rus.png";
-        if ([UIScreen mainScreen].bounds.size.height==568) {
+        if (IS_IPHONE_5) {
             backgroundName=@"about-rus-iphone5hd.png";
         }else{
             backgroundName=@"about-rus.png";
         }
     }else {
         siteImageName=@"site-eng.png";
-        if ([UIScreen mainScreen].bounds.size.height==568) {
+        if (IS_IPHONE_5) {
             backgroundName=@"about-eng-iphone5hd.png";
         }else{
             backgroundName=@"about-eng.png";

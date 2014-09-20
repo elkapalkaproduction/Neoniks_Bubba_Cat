@@ -70,6 +70,12 @@ static SharedData * instance = nil;
     }
 }
 
+
+- (BOOL)isBackgroundMusicPlaying {
+    return [sae isBackgroundMusicPlaying];
+}
+
+
 -(void) pauseBackgroud{
     if (g_bSound) {
         [sae pauseBackgroundMusic];

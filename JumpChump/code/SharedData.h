@@ -32,6 +32,7 @@
 
 -(id)init;
 -(void) playBackground:(NSString*) title;
+-(BOOL) isBackgroundMusicPlaying;
 -(void) playSoundEffect:(NSString*) title;
 -(void) stopBackground;
 -(void) stopEffect;
