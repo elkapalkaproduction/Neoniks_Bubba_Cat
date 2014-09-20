@@ -27,7 +27,7 @@
 @end
 
 @implementation GamePlayLaer
-#define changeThemeAuto YES
+#define changeThemeAuto NO
 
 
 #define propellerSpeed 100
@@ -48,8 +48,8 @@
 #define pipesStartPosY (SCREEN_HEIGHT / 2 + 50)
 
 #define swingScale 1.1f
-#define swingOffsetHorizontal -8
-#define swingOffsetVertical 29
+#define swingOffsetHorizontal 0
+#define swingOffsetVertical 20
 
 #define propellerScale 1.3f
 #define propellerOffsetHorizontal -3
