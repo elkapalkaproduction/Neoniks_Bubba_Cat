@@ -39,7 +39,7 @@
 #define accelerationHorizontalFactor 7.0f
 #define characterAccelerationRatioX 1.18f
 #define characterMaxIncline 28
-#define InclineSpeed 120.0f
+#define InclineSpeed 100.0f
 
 
 #define pipeScaleSize .6
