@@ -14,7 +14,7 @@
 		<string>https://github.com/elkapalkaproduction/Neoniks_Bubba_Cat.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>FlappyHunt.xcodeproj/project.xcworkspace</string>
+	<string>FlappyHunt.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>34AF917DA22DA6CB6CDF4E65C99E53B429A736A7</key>
