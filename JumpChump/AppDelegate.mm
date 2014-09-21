@@ -108,7 +108,7 @@
         [SharedData setHighScore:0.0f];
         [SharedData setValuesAtFirstLoad:YES];
     }
-
+#ifdef FreeVersion
     // chart boost
     [Chartboost startWithAppId:CB_APPID appSignature:CB_SIGNATURE delegate:self];
     
@@ -117,7 +117,7 @@
     [RevMobAds startSessionWithAppID:REVMOB_APP_ID];
     //[RevMobAds session].testingMode = RevMobAdsTestingModeWithAds;
     //[[RevMobAds session] showFullscreen];
-
+#endif
 	[self initGameCenter];
     
 //    [self createAdmobAds];
@@ -183,6 +183,7 @@
 	
 	[super dealloc];
 }
+#ifdef FreeVersion
 
 #pragma mark ChartBoost
 - (BOOL)shouldDisplayInterstitial:(NSString *)location {
@@ -299,7 +300,7 @@
 - (BOOL)shouldRequestInterstitialsInFirstSession {
     return YES;
 }
-
+#endif
 #pragma mark GameCenter View Controllers
 
 - (void)initGameCenter{

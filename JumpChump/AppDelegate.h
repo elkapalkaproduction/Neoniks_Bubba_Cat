@@ -8,16 +8,23 @@
 
 #import <UIKit/UIKit.h>
 #import "cocos2d.h"
-#import "Chartboost.h"
 #import <GameKit/GameKit.h>
 #import "GCViewController.h"
 #import "GameCenterManager.h"
+#ifdef FreeVersion
 #import <RevMobAds/RevMobAds.h>
+#import "Chartboost.h"
+#endif
 #import <MessageUI/MessageUI.h>
 
 
 
-@interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate, ChartboostDelegate,GKLeaderboardViewControllerDelegate,GameCenterManagerDelegate, GKAchievementViewControllerDelegate, RevMobAdsDelegate,MFMailComposeViewControllerDelegate>
+@interface AppController : NSObject <UIApplicationDelegate, CCDirectorDelegate,
+GKLeaderboardViewControllerDelegate,GameCenterManagerDelegate, GKAchievementViewControllerDelegate,
+#ifdef FreeVersion
+RevMobAdsDelegate,ChartboostDelegate,
+#endif
+MFMailComposeViewControllerDelegate>
 {
 	UIWindow *window_;
 	UINavigationController *navController_;

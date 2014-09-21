@@ -9,12 +9,12 @@
 #import "CCLayer.h"
 #import "cocos2d.h"
 #import "AnimatedText.h"
-//#import "BackgroundLayer.h"
 #import "Box2D.h"
 #import "GLES-Render.h"
 #import "ContactListener.h"
+#ifdef FreeVersion
 #import "GADBannerView.h"
-
+#endif
 
 
 #define BANNER_TYPE kBanner_Portrait_Bottom
@@ -93,8 +93,9 @@ typedef enum _bannerType
     b2Body* groundBody;
     b2ContactListener* contactListener;
     
-    
+#ifdef FreeVersion
     GADBannerView *mBannerView; //
+#endif
     CocosBannerType mBannerType; //
     float on_x, on_y, off_x, off_y; //
     

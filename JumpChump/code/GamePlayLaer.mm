@@ -10,8 +10,10 @@
 #import "AnimatedText.h"
 #import "global.h"
 #import "SharedData.h"
+#ifdef FreeVersion
 #import "Chartboost.h"
 #import <RevMobAds/RevMobAds.h>
+#endif
 #import "AppDelegate.h"
 #include <math.h>
 #import "Appirater.h"
@@ -178,22 +180,7 @@
 
 -(void)createAdmobAds
 {
-    //CGSize winSize = [[CCDirector sharedDirector] winSize];
-    
-    //kGADAdSizeBanner
-    //kGADAdSizeSmartBannerLandscape
-    
-//    GADBannerView *adBanner_ = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-//    adBanner_.adUnitID = ADMOB_BANNER_ID;
-//    adBanner_.delegate = nil;
-//    //adBanner_.frame = CGRectMake(0, winSize.height - 50, winSize.width, 50);
-//    
-//    AppController *app = (AppController*) [[UIApplication sharedApplication] delegate];
-//    [adBanner_ setRootViewController:[app navController]];
-//    [[CCDirector sharedDirector].view addSubview:adBanner_];
-//    
-//    GADRequest *r = [[GADRequest alloc] init];
-//    [adBanner_ loadRequest:r];
+#ifdef FreeVersion
     mBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
     mBannerView.adUnitID = ADMOB_BANNER_ID;
     mBannerView.delegate = nil;
@@ -205,6 +192,7 @@
     
     GADRequest *r = [[GADRequest alloc] init];
     [mBannerView loadRequest:r];
+#endif
 }
 
 #pragma mark - #yo - initializing sprites
@@ -314,7 +302,7 @@
     [self addChild:m_lblScoreShadow z:9];
     
     m_lblScoreTitle = [CCLabelTTF labelWithString:@"last score" fontName:FontName fontSize:font_size/ 4];
-    m_lblScoreTitle.anchorPoint = ccp(0.5, 1.4);
+    m_lblScoreTitle.anchorPoint = ccp(0.5, 0.5);
     m_lblScoreTitle.color = ccc3(fontR, fontG, fontB);
     m_lblScoreTitle.scale = SCALE_X;
     m_lblScoreTitle.position = CGPointZero;
@@ -322,7 +310,7 @@
     [self addChild:m_lblScoreTitle z:10];
     
     m_lblScoreTitleShadow = [CCLabelTTF labelWithString:@"last score" fontName:FontName fontSize:font_size/ 4];
-    m_lblScoreTitleShadow.anchorPoint = ccp(0.5, 1.4);
+    m_lblScoreTitleShadow.anchorPoint = ccp(0.5, 0.5);
     m_lblScoreTitleShadow.color = ccc3(0, 0, 0);
     m_lblScoreTitleShadow.scale = SCALE_X;
     m_lblScoreTitleShadow.position = CGPointZero;
@@ -337,7 +325,7 @@
     [self addChild:m_lblHighScore z:10];
     
     m_lblHighScoreTitle= [CCLabelTTF labelWithString:@"best score" fontName:FontName fontSize:font_size/4];
-    m_lblHighScoreTitle.anchorPoint = ccp(0.5, 1.4);
+    m_lblHighScoreTitle.anchorPoint = ccp(0.5, 0.5);
     m_lblHighScoreTitle.color = ccc3(fontR, fontG, fontB);
     m_lblHighScoreTitle.position = CGPointZero;
     m_lblHighScoreTitle.scale = SCALE_X;
@@ -345,7 +333,7 @@
     [self addChild:m_lblHighScoreTitle z:10];
     
     m_lblHighScoreTitleShadow= [CCLabelTTF labelWithString:@"best score" fontName:FontName fontSize:font_size/4];
-    m_lblHighScoreTitleShadow.anchorPoint = ccp(0.5, 1.4);
+    m_lblHighScoreTitleShadow.anchorPoint = ccp(0.5, 0.5);
     m_lblHighScoreTitleShadow.color = ccc3(0, 0, 0);
     m_lblHighScoreTitleShadow.position = CGPointZero;
     m_lblHighScoreTitleShadow.scale = SCALE_X;
@@ -480,8 +468,10 @@
 
 -(void)showAboutUsPage:(id)sender{
     if (!self.isGameStartedAlready) {
+#ifdef FreeVersion
         [mBannerView removeFromSuperview];
         [[RevMobAds session] hideBanner];
+#endif
         [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
     }
 }
@@ -538,7 +528,9 @@
 
 -(void)onMenuMore:(id)sender
 {
+#ifdef FreeVersion
     [[Chartboost sharedChartboost] showMoreApps:CBLocationMainMenu];
+#endif
 }
 
 -(void)onMenuMail:(id)sender
@@ -937,8 +929,10 @@
 
 // ads
 -(void) showADS{
+#ifdef FreeVersion
     [[Chartboost sharedChartboost] showInterstitial:CBLocationGameOver];
     [[RevMobAds session] showFullscreen];
+#endif
 }
 
 -(void) initPhysics

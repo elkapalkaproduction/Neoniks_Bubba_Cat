@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>FlappyHuntPaid.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>75F87C9E19CF1F6300331D5A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>84C4ABB818DD13550018BA6A</key>
 		<dict>
 			<key>primary</key>
