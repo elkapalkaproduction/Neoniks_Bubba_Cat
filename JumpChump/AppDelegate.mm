@@ -116,6 +116,7 @@
     }
 #ifdef FreeVersion
     // chart boost
+    [[Chartboost sharedChartboost] cacheMoreApps:CBLocationMainMenu];
     [Chartboost startWithAppId:CB_APPID appSignature:CB_SIGNATURE delegate:self];
     
     

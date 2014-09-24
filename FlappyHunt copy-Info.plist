@@ -41,7 +41,7 @@
 		<string>icon-72</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.neoniks.bubbacat.free</string>
+	<string>com.neoniks.bubbacat.paid</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
