@@ -20,7 +20,7 @@
 @property (nonatomic, assign) BOOL  g_bSound;
 @property (nonatomic, assign) BOOL  g_bEffect;
 
-+ (id)getSharedInstance;
++ (instancetype)getSharedInstance;
 
 + (void) setHighScore:(float)val;
 + (float) getHighScore;

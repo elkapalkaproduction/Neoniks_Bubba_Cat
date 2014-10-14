@@ -23,6 +23,7 @@
  */
 
 #import "SimpleAudioEngine.h"
+#import "SharedData.h"
 
 @implementation SimpleAudioEngine
 
@@ -219,6 +220,9 @@ static CDBufferManager *bufferManager = nil;
 
 -(int) playEffect:(NSString*) file loop:(BOOL) loop
 {
+    if (![SharedData getSharedInstance].g_bSound) {
+        return 0;
+    }
     int handle = [[SimpleAudioEngine sharedEngine] playEffect:file];
     if (loop) {
         alSourcei(handle, AL_LOOPING, 1);

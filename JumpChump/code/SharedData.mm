@@ -16,7 +16,8 @@ static SharedData * instance = nil;
 @synthesize g_bEffect;
 
 
-+(id)getSharedInstance
+
++(instancetype)getSharedInstance
 {
     if(instance == nil)
     {
@@ -42,6 +43,7 @@ static SharedData * instance = nil;
 }
 
 
+
 + (BOOL) getSoundEnabel{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     return [defaults boolForKey:@"sound"];
@@ -60,14 +62,14 @@ static SharedData * instance = nil;
 }
 
 -(void) playBackground:(NSString *)title{
-    if (g_bSound) {
+//    if (g_bSound) {
         if (cur_sound != title || ![sae isBackgroundMusicPlaying]) {
             [sae stopBackgroundMusic];
 //            [sae setBackgroundMusicVolume:0.1f];
             [sae playBackgroundMusic:title loop:YES];
             cur_sound = title;
         }
-    }
+//    }
 }
 
 

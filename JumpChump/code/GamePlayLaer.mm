@@ -168,8 +168,9 @@
             [self initTutorial];
             [prefs setBool:YES forKey:@"tutorialAlreadyShown"];
         }
-        
-        [[SharedData getSharedInstance] playBackground:SOUND_BACK];
+        if ([SharedData getSharedInstance].g_bSound) {
+            [[SharedData getSharedInstance] playBackground:SOUND_BACK];
+        }
         m_btnSound.normalImage = [self soundButtonSprite];
         m_btnSound.selectedImage = [self soundButtonSprite];
 
@@ -361,21 +362,22 @@
         globalOffset=50;
     }else{
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad){
-            globalOffset=100;
+            globalOffset=150;
         }else{
             globalOffset=60;
         }
     }
+    CGFloat verticalSpace = 25;
     
-    [m_lblScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x, POS_SCORE_LEFT.y +globalOffset)]];
-    [m_lblScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + scoreShadowOffset, POS_SCORE_LEFT.y - scoreShadowOffset +globalOffset)]];
-    [m_lblScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x,POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y +globalOffset)]];
-    [m_lblScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + (1 * SCALE_X),POS_SCORE_LEFT.y - m_lblScore.contentSize.width - 7 * SCALE_Y -(1 * SCALE_Y)+globalOffset)]];
+    [m_lblScore runAction:           [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x, POS_SCORE_LEFT.y + globalOffset)]];
+    [m_lblScoreShadow runAction:     [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + scoreShadowOffset, POS_SCORE_LEFT.y - scoreShadowOffset +globalOffset)]];
+    [m_lblScoreTitle runAction:      [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x,POS_SCORE_LEFT.y - m_lblScore.contentSize.width - verticalSpace * SCALE_Y +globalOffset)]];
+    [m_lblScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_LEFT.x + (1 * SCALE_X),POS_SCORE_LEFT.y - m_lblScore.contentSize.width - (verticalSpace - 1) * SCALE_Y + globalOffset)]];
     
-    [m_lblHighScore runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x, POS_SCORE_RIGHT.y - scoreShadowOffset+globalOffset)]];
-    [m_lblHighScoreShadow runAction: [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + scoreShadowOffset, POS_SCORE_RIGHT.y - scoreShadowOffset +globalOffset)]];
-    [m_lblHighScoreTitle runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x,POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y +globalOffset)]];
-    [m_lblHighScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + (1 * SCALE_X),POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - 7 * SCALE_Y - (1 * SCALE_Y) +globalOffset)]];
+    [m_lblHighScore runAction:           [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x, POS_SCORE_RIGHT.y - scoreShadowOffset+globalOffset)]];
+    [m_lblHighScoreShadow runAction:     [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + scoreShadowOffset, POS_SCORE_RIGHT.y - scoreShadowOffset +globalOffset)]];
+    [m_lblHighScoreTitle runAction:      [CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x,POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - verticalSpace * SCALE_Y +globalOffset)]];
+    [m_lblHighScoreTitleShadow runAction:[CCMoveTo actionWithDuration:TIME_BAR_SCALE position:ccp(POS_SCORE_RIGHT.x + (1 * SCALE_X),POS_SCORE_RIGHT.y - m_lblScore.contentSize.width - (verticalSpace - 1) * SCALE_Y + globalOffset)]];
     
     
     m_lblScoreTitle.visible = m_lblScoreTitleShadow.visible = m_lblHighScoreShadow.visible = m_lblHighScoreTitle.visible = m_lblHighScoreTitleShadow.visible = m_lblHighScore.visible = YES;
@@ -516,12 +518,17 @@
 
 -(void)onMenuSound:(id)sender
 {
+
     if ([[SharedData getSharedInstance] isBackgroundMusicPlaying]) {
+//        [SharedData getSharedInstance].g_bSound = NO;
+//        [SharedData getSharedInstance].g_bEffect = NO;
         [[SharedData getSharedInstance] pauseBackgroud];
     } else {
         [[SharedData getSharedInstance] playBackground:SOUND_BACK];
     }
-    
+    [SharedData getSharedInstance].g_bSound = [[SharedData getSharedInstance] isBackgroundMusicPlaying];
+    [SharedData getSharedInstance].g_bEffect = [[SharedData getSharedInstance] isBackgroundMusicPlaying];
+
     m_btnSound.normalImage = [self soundButtonSprite];
     m_btnSound.selectedImage = [self soundButtonSprite];
 }
