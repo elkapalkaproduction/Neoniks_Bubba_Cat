@@ -30,7 +30,11 @@ typedef enum _bannerType
 }CocosBannerType;
 
 
-@interface GamePlayLaer : CCLayer{
+@interface GamePlayLaer : CCLayer
+#ifdef FreeVersion
+<ChartboostDelegate>
+#endif 
+{
 
     CGSize      sz_jump;
     CCSprite * spr_bg;
