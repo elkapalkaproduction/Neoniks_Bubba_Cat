@@ -17,6 +17,9 @@
 #import "MFLanguage.h"
 #import "BCGameLogic.h"
 
+#ifndef FreeVersion
+#import <floopsdk/floopsdk.h>
+#endif
 
 @implementation AppController
 
@@ -36,7 +39,9 @@
 	// Create the main window
     [MFLanguage sharedLanguage];
     [BCGameLogic sharedLogic];
-    
+#ifndef FreeVersion
+    [[FloopSdkManager sharedInstance] startWithAppKey:@"d31c1481a4865806677988b7fddd5a36"];
+#endif
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
 	

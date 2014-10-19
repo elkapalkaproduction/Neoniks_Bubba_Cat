@@ -11,7 +11,9 @@
 #import "MFImageCropper.h"
 #import "global.h"
 #import "GamePlayLaer.h"
-
+#ifndef FreeVersion
+#import <floopsdk/floopsdk.h>
+#endif
 @implementation AboutUsLayer
 
 // Helper class method that creates a Scene with the HelloWorldLayer as the only child.
@@ -137,12 +139,25 @@
 }
 
 -(void)openURL:(id)sender{
+#ifdef FreeVersion
+    [self openSite];
+#else
+    [[FloopSdkManager sharedInstance] showParentalGate:^(BOOL success) {
+        if (success) {
+            [self openSite];
+        }
+    }];
+#endif
+}
+
+
+- (void)openSite {
     if ([[MFLanguage sharedLanguage].language isEqualToString:@"ru"]) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.neoniki.com"]];
     }else{
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.neoniks.com"]];
     }
-    
+
 }
 
 //-(CCSprite*) createSpriteRectangleWithSize:(CGSize)size

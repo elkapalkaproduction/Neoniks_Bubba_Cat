@@ -13,6 +13,8 @@
 #ifdef FreeVersion
 #import "Chartboost.h"
 #import <RevMobAds/RevMobAds.h>
+#else
+#import <floopsdk/floopsdk.h>
 #endif
 #import "AppDelegate.h"
 #include <math.h>
@@ -537,6 +539,8 @@
 {
 #ifdef FreeVersion
     [[Chartboost sharedChartboost] showMoreApps:CBLocationMainMenu];
+#else
+    
 #endif
 }
 
@@ -1061,10 +1065,19 @@
 
 -(void)onMenuRateAppNow:(id)sender
 {
+#ifdef FreeVersion
     if (!self.isGameStartedAlready) {
         [Appirater setAppId:APPLE_APP_ID];
         [Appirater rateApp];
     }
+#else
+    [[FloopSdkManager sharedInstance] showParentalGate:^(BOOL success) {
+        if (!self.isGameStartedAlready && success) {
+            [Appirater setAppId:APPLE_APP_ID];
+            [Appirater rateApp];
+        }
+    }];
+#endif
 }
 
 
