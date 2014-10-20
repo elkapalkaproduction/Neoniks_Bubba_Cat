@@ -13,6 +13,7 @@
 #import "GLES-Render.h"
 #import "ContactListener.h"
 #ifdef FreeVersion
+#import <StartApp/StartApp.h>
 #import "GADBannerView.h"
 #endif
 
@@ -32,7 +33,7 @@ typedef enum _bannerType
 
 @interface GamePlayLaer : CCLayer
 #ifdef FreeVersion
-<ChartboostDelegate>
+<ChartboostDelegate, STADelegateProtocol>
 #endif 
 {
 

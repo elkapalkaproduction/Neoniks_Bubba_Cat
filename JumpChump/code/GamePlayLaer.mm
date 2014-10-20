@@ -27,7 +27,9 @@
 @interface GamePlayLaer ()
 
 @property(nonatomic)BOOL isGameStartedAlready;
-
+#ifdef FreeVersion
+@property (strong, nonatomic) STAStartAppAd *startAdd;
+#endif
 @end
 
 @implementation GamePlayLaer
@@ -79,6 +81,8 @@
 
 #define PI 3.14159265
 #define DEBUG_MODE_ON NO
+
+
 
 +(CCScene *) scene
 {
@@ -195,6 +199,8 @@
     
     GADRequest *r = [[GADRequest alloc] init];
     [mBannerView loadRequest:r];
+    
+    [self.startAdd loadAdWithDelegate:self];
 #endif
 }
 
@@ -957,6 +963,7 @@
 #ifdef FreeVersion
     [Chartboost sharedChartboost].delegate = self;
     [[Chartboost sharedChartboost] showInterstitial:CBLocationGameOver];
+    [self.startAdd showAd];
     [[RevMobAds session] showFullscreen];
 #endif
 }
@@ -1047,7 +1054,10 @@
     [self removeAllBodies];
     delete world;
 	world = NULL;
-	
+#ifdef FreeVersion
+    [self.startAdd dealloc];
+    self.startAdd = nil;
+#endif
 	delete m_debugDraw;
 	m_debugDraw = NULL;
 	delete contactListener;
@@ -1907,6 +1917,28 @@
 
 - (void)didDisplayInterstitial:(CBLocation)location {
     [[SharedData getSharedInstance] pauseBackgroud];
+}
+
+
+- (void)didShowAd:(STAAbstractAd *)ad {
+    [[SharedData getSharedInstance] pauseBackgroud];
+
+}
+
+
+- (void)didCloseAd:(STAAbstractAd *)ad {
+    if ([SharedData getSharedInstance].g_bSound) {
+        [[SharedData getSharedInstance] playBackground:SOUND_BACK];
+    }
+}
+
+
+- (STAStartAppAd *)startAdd {
+    if (!_startAdd) {
+        _startAdd = [[STAStartAppAd alloc] init];
+    }
+    
+    return _startAdd;
 }
 #endif
 

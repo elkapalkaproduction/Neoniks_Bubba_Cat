@@ -47,7 +47,6 @@
     STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
     sdk.appID = @"210140548";
     sdk.devID = @"105068540";
-    [sdk showSplashAd];
 #endif
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
