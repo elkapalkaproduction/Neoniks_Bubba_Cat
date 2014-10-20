@@ -19,6 +19,8 @@
 
 #ifndef FreeVersion
 #import <floopsdk/floopsdk.h>
+#else
+#import <StartApp/StartApp.h>
 #endif
 
 @implementation AppController
@@ -41,6 +43,11 @@
     [BCGameLogic sharedLogic];
 #ifndef FreeVersion
     [[FloopSdkManager sharedInstance] startWithAppKey:@"d31c1481a4865806677988b7fddd5a36"];
+#else
+    STAStartAppSDK* sdk = [STAStartAppSDK sharedInstance];
+    sdk.appID = @"210140548";
+    sdk.devID = @"105068540";
+    [sdk showSplashAd];
 #endif
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
