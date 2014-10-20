@@ -540,15 +540,29 @@
 #ifdef FreeVersion
     [[Chartboost sharedChartboost] showMoreApps:CBLocationMainMenu];
 #else
-    
+    if (!self.isGameStartedAlready) {
+        [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+    }
 #endif
 }
 
 -(void)onMenuMail:(id)sender
 {
     if (!self.isGameStartedAlready) {
+        
+#ifdef FreeVersion
         AppController* appDelegate = (AppController*) [[UIApplication sharedApplication] delegate];
         [appDelegate openMail:nil];
+      
+#else
+        [[FloopSdkManager sharedInstance] showParentalGate:^(BOOL success) {
+            if (success) {
+                AppController* appDelegate = (AppController*) [[UIApplication sharedApplication] delegate];
+                [appDelegate openMail:nil];
+            }
+        }];
+
+#endif
     }
     
 }
@@ -1073,7 +1087,7 @@
 #else
     [[FloopSdkManager sharedInstance] showParentalGate:^(BOOL success) {
         if (!self.isGameStartedAlready && success) {
-            [Appirater setAppId:APPLE_APP_ID];
+            [Appirater setAppId:APPLE_APP_PAID_ID];
             [Appirater rateApp];
         }
     }];
@@ -1083,7 +1097,11 @@
 
 -(void)initAppirater
 {
+#ifdef FreeVersion
     [Appirater setAppId:APPLE_APP_ID];
+#else
+    [Appirater setAppId:APPLE_APP_PAID_ID];
+#endif
     [Appirater setDaysUntilPrompt:3];
     [Appirater setUsesUntilPrompt:0];
     [Appirater setSignificantEventsUntilPrompt:-1];

@@ -21,11 +21,14 @@
 
 
 // Message appearing on a FB or Twittter share
-#define SHARE_MESSAGE @"Help Bubba the flying cat! Beat my high score in this free game for your iPhone/iPad: bit.ly/bubba_cat"
+#define SHARE_MESSAGE @"Help Bubba the flying cat! Beat my high score in this free game for your iPhone/iPad: http://bit.ly/bubba_cat_usa"
+#define SHARE_MESSAGE_PAID @"Help Bubba the flying cat! Beat my high score in this free game for your iPhone/iPad: http://bit.ly/bubba_cat_paid"
+
 
 
 
 #define APPLE_APP_ID        @"915973453"
+#define APPLE_APP_PAID_ID   @"925984890"
 #define CB_APPID            @"53ff6ce489b0bb01b6456dea"
 #define CB_SIGNATURE        @"322183025c09228896fa6b5ba36abc910478f44d"
 #define REVMOB_APP_ID       @"53ff6c88f6eb08d006f32d94"

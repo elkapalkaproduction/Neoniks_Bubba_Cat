@@ -522,7 +522,11 @@
         NSData *imageData = UIImagePNGRepresentation(myImage);
         [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"gameIcon"];
         
+#ifdef FreeVersion
         NSString *emailBody = SHARE_MESSAGE;
+#else
+        NSString *emailBody = SHARE_MESSAGE_PAID;
+#endif
         [mailer setMessageBody:emailBody isHTML:NO];
         
         if(IS_IPAD)
