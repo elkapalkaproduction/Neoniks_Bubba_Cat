@@ -547,7 +547,8 @@
     [[Chartboost sharedChartboost] showMoreApps:CBLocationMainMenu];
 #else
     if (!self.isGameStartedAlready) {
-        [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+        [[FloopSdkManager sharedInstance] showCrossPromotionPageWithName:nil completion:nil];
+//        [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
     }
 #endif
 }
