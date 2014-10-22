@@ -547,8 +547,12 @@
     [[Chartboost sharedChartboost] showMoreApps:CBLocationMainMenu];
 #else
     if (!self.isGameStartedAlready) {
-        [[FloopSdkManager sharedInstance] showCrossPromotionPageWithName:nil completion:nil];
-//        [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+        [[FloopSdkManager sharedInstance] showParentalGate:^(BOOL success) {
+            if (success) {
+                [[FloopSdkManager sharedInstance] showCrossPromotionPageWithName:nil completion:nil];
+                //          [[CCDirector sharedDirector] pushScene:[AboutUsLayer scene]];
+            }
+        }];
     }
 #endif
 }

@@ -2547,8 +2547,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
 				COPY_PHASE_STRIP = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2581,7 +2581,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "FlappyHunt copy";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "15b68f17-d756-43aa-a4d9-afda5c67f2e7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
 				VALID_ARCHS = "armv7 armv7s";
@@ -2594,8 +2594,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pavel Mamaev (94G97SK366)";
 				COPY_PHASE_STRIP = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2627,7 +2627,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = "FlappyHunt copy";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "15b68f17-d756-43aa-a4d9-afda5c67f2e7";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "\"JumpChump/libs\"";
 				VALIDATE_PRODUCT = YES;
@@ -2665,7 +2665,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2f9f5a84-e8de-4663-8b3f-3e8bea0e29a7";
+				PROVISIONING_PROFILE = "15b68f17-d756-43aa-a4d9-afda5c67f2e7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2697,7 +2697,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
-				PROVISIONING_PROFILE = "2f9f5a84-e8de-4663-8b3f-3e8bea0e29a7";
+				PROVISIONING_PROFILE = "15b68f17-d756-43aa-a4d9-afda5c67f2e7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
